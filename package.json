@@ -1,0 +1,19 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "Let's build a game!",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest",
+    "test:watch": "npx jest --watch",
+    "start": "node index.js"
+  },
+  "author": "Rein Op 't Land",
+  "license": "SEE LICENSE.MD",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
