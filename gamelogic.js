@@ -1,22 +1,33 @@
 function displayWordSoFar(word, guesses) {
-  // - [ ] zet je testje op test.only (later weer weghalen)
-  // - [ ] loggen: wat is word, wat is guesses
-  // - [ ] javascript, ['a', 'b'] -> "_ _ _ _ _ _ _ _ _ _ "
-  // - [ ] javascript "splitten" split() -> ['j','a','v','a','s','c','r','i','p','t']
-  // - [ ] een loop maken -> ['j','a','v','a','s','c','r','i','p','t']
-  // - [ ] checken: zit de letter in guesses?
-  // - [ ] if else
-  // - [ ] zo nee: "_ "
-  // - [ ] zo ja: "j " (niet j, maar de letter die we dan checken)
-  // - [ ] klaar? -> onze string die we hebben gemaakt returnen
+  output = '';
+  wordArray = word.split('');
+  // if guesses includes current word letter -> add letter to output
+  for (let i = 0; i < wordArray.length; i++) {
+    if (guesses.includes(wordArray[i])) output += wordArray[i] + ' ';
+    if (!guesses.includes(wordArray[i])) output += '_ ';
+  }
+  return output;
 }
 
 function isGameWon(word, guesses) {
-  // WRITE ME
+  let counter = 0;
+  wordArray = word.split('');
+  // check for each letter in word if guessed right, when true increase counter by 1
+  for (let i = 0; i < wordArray.length; i++) {
+    if (guesses.includes(wordArray[i])) counter++;
+  }
+  if (counter === word.length) return true;
+  if (counter !== word.length) return false;
 }
 
 function isGameLost(word, guesses) {
-  // WRITE ME
+  let counterWrong = 0;
+  // Check if each guesses letter is wrong, then increase counter by 1
+  for (let i = 0; i < guesses.length; i++) {
+    if (!word.includes(guesses[i])) counterWrong++;
+  }
+  if (counterWrong >= 7) return true;
+  if (counterWrong < 7) return false;
 }
 
 module.exports = {
